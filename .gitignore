@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.pyc
+*.pyd
+
+# Virtual env
+backend/venv/
+venv/
+
+# Secrets — NEVER commit
+.env
+backend/.env
+token.json
+backend/token.json
+
+# Database
+*.db
+*.sqlite3
+
+# Node
+frontend/node_modules/
+frontend/dist/
+
+# OS
+.DS_Store
+Thumbs.db

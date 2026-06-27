@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * { box-sizing: border-box; }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background-color: #09090b;
+    background-image:
+      radial-gradient(ellipse 80% 40% at 50% -5%, rgba(99, 102, 241, 0.13) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 30% at 85% 60%, rgba(139, 92, 246, 0.06) 0%, transparent 60%);
+    color: #f4f4f5;
+    min-height: 100vh;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  ::-webkit-scrollbar           { width: 5px; height: 5px; }
+  ::-webkit-scrollbar-track     { background: transparent; }
+  ::-webkit-scrollbar-thumb     { background: #3f3f46; border-radius: 10px; }
+  ::-webkit-scrollbar-thumb:hover { background: #52525b; }
+}
+
+/* ─── Animations ────────────────────────────────────────────────────────── */
+@keyframes slide-up {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position:  200% 0; }
+}
+@keyframes pulse-ring {
+  0%   { box-shadow: 0 0 0 0 rgba(99,102,241,0.4); }
+  70%  { box-shadow: 0 0 0 8px rgba(99,102,241,0); }
+  100% { box-shadow: 0 0 0 0 rgba(99,102,241,0); }
+}
+
+@layer utilities {
+  /* Kanban column scroll */
+  .column-scroll {
+    overflow-y: auto;
+    max-height: calc(100vh - 128px);
+    scrollbar-gutter: stable;
+  }
+
+  /* Glass surface */
+  .glass {
+    background: rgba(255,255,255,0.03);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+  }
+
+  /* Card entrance */
+  .animate-slide-up { animation: slide-up 0.22s ease-out both; }
+  .animate-fade-in  { animation: fade-in 0.18s ease-out both; }
+
+  /* Loading skeleton */
+  .skeleton {
+    background: linear-gradient(90deg, #18181b 25%, #27272a 50%, #18181b 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.6s infinite;
+    border-radius: 6px;
+  }
+
+  /* Status glow on card hover */
+  .hover-glow-indigo:hover { box-shadow: 0 8px 32px rgba(99,102,241,0.22), 0 2px 8px rgba(0,0,0,0.4); }
+  .hover-glow-amber:hover  { box-shadow: 0 8px 32px rgba(245,158,11,0.18), 0 2px 8px rgba(0,0,0,0.4); }
+  .hover-glow-sky:hover    { box-shadow: 0 8px 32px rgba(56,189,248,0.18), 0 2px 8px rgba(0,0,0,0.4); }
+  .hover-glow-emerald:hover{ box-shadow: 0 8px 32px rgba(52,211,153,0.18), 0 2px 8px rgba(0,0,0,0.4); }
+  .hover-glow-rose:hover   { box-shadow: 0 8px 32px rgba(251,113,133,0.18), 0 2px 8px rgba(0,0,0,0.4); }
+  .hover-glow-zinc:hover   { box-shadow: 0 8px 32px rgba(113,113,122,0.15), 0 2px 8px rgba(0,0,0,0.4); }
+}
