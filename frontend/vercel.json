@@ -1,6 +1,6 @@
 {
   "rewrites": [
-    { "source": "/api/:path*", "destination": "hirevoid-production.up.railway.app/api/:path*" },
+    { "source": "/api/:path*", "destination": "https://hirevoid-production.up.railway.app/:path*" },
     { "source": "/(.*)", "destination": "/index.html" }
   ]
 }
