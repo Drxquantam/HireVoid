@@ -33,14 +33,19 @@ Base.metadata.create_all(bind=engine)
 
 app = FastAPI(title="HireVoid API", version="1.0.0")
 
-# Allow the React dev server on port 5173 to call this API
+# Allow the React dev server and the deployed frontend to call this API
+_allowed_origins = [
+    "http://localhost:5173",
+    "http://localhost:5174",
+    "http://localhost:3000",
+]
+_frontend_url = os.getenv("FRONTEND_URL")
+if _frontend_url:
+    _allowed_origins.append(_frontend_url)
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "http://localhost:5173",
-        "http://localhost:5174",
-        "http://localhost:3000",
-    ],
+    allow_origins=_allowed_origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
